@@ -37,6 +37,16 @@ docs/         설계 메모 · API 제약 정리 · 지표 사전 (docs/notes.md
 uv sync
 ```
 
+## 배포용 requirements.txt
+
+의존성의 단일 진실 공급원은 `pyproject.toml` + `uv.lock` 이지만, `requirements.txt`(pip 고정 버전
+목록)도 함께 제공합니다 — Streamlit Community Cloud 등 uv 를 모르는 배포 환경에서 사용합니다.
+`uv.lock` 을 바꾼 뒤에는 아래로 재생성하세요(직접 수정하지 마세요):
+
+```powershell
+uv export --no-hashes --no-annotate --format requirements.txt -o requirements.txt
+```
+
 ## 네이버 API 키 설정
 
 기본값은 **NAVER Cloud Platform / API Hub** (`NAVER_API_PLATFORM=apihub`).
